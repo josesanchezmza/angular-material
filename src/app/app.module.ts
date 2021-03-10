@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppMaterialModule } from "./app.material.module";
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import { AngularMaterialModule } from './angular-material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -18,9 +18,9 @@ import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterialModule,
+    AngularMaterialModule,
     ReactiveFormsModule,
-    NgxMaterialTimepickerModule
+
   ],
   providers: [
 
