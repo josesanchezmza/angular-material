@@ -7,12 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularMaterialModule } from './angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ExtendedModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule  } from '@angular/forms';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-
+    ExtendedModule,
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [
 

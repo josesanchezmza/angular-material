@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit(registerForm)"
+          #registerForm="ngForm">
+      <h2>Registro</h2>
+
+      <mat-form-field class="full-width-input">
+        <input matInput
+               placeholder="Email"
+               name="email"
+               [(ngModel)]="usuario.email"
+               required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput
+               placeholder="Nombre"
+               name="nombre"
+               [(ngModel)]="usuario.nombre"
+               minlength="2"
+               required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput
+               type="password"
+               placeholder="Password"
+               name="password"
+               [(ngModel)]="usuario.password"
+               minlength="6"
+               required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Login</button>
+    </form>
+  </mat-card-content>
+  <mat-label>Ya posee un usuario?  <a routerLink="/login">Ingresar</a></mat-label>
+</mat-card>
+
+
+
+
+{{ registerForm.value | json }}
