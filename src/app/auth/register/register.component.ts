@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UsuarioModel} from "../../shared/models/usuario.model";
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth.service";
-
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,8 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class RegisterComponent implements OnInit {
   usuario: UsuarioModel = new UsuarioModel();
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,14 +21,27 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm){
     if (form.invalid) { return; }
 
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'espere for favor...',
+      icon: "info"
+    });
+    Swal.showLoading();
+
     this.authService.nuevoUsuario(this.usuario).subscribe( res => {
       console.log(res);
+        Swal.close();
+        this.router.navigateByUrl('/home');
     },
       err => {
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'error',
+          title: 'Error al autenticar',
+          text: err.error.error.message
+        });
       console.log(err.error.error.message);
-      })
-    // console.log(this.usuario);
-    // console.log(form);
-  }
 
+      })
+  }
 }

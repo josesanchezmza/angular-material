@@ -1,11 +1,8 @@
-<mat-card>
+<mat-card class="mat-elevation-z8">
   <mat-card-content>
     <form (ngSubmit)="onSubmit(loginForm)"
           #loginForm=ngForm>
       <h2>Log In</h2>
-<!--      <mat-error *ngIf="loginInvalid">-->
-<!--        Nombre de usuario o contraseña inválido.-->
-<!--      </mat-error>-->
       <mat-form-field class="full-width-input">
         <input matInput
                placeholder="Email"
@@ -35,7 +32,3 @@
   </mat-card-content>
   <mat-label>No posee un usuario?  <a routerLink="/register">Registrarse</a></mat-label>
 </mat-card>
-
-Datos Modelo: {{ usuario | json }}
-<br>
-Datos Form: {{ loginForm.value | json }}

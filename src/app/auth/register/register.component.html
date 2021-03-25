@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="mat-elevation-z8">
   <mat-card-content>
     <form (ngSubmit)="onSubmit(registerForm)"
           #registerForm="ngForm">
@@ -44,8 +44,3 @@
   </mat-card-content>
   <mat-label>Ya posee un usuario?  <a routerLink="/login">Ingresar</a></mat-label>
 </mat-card>
-
-
-
-
-{{ registerForm.value | json }}

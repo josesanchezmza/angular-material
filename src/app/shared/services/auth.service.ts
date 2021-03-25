@@ -7,16 +7,10 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class AuthService {
-
   private url = 'https://identitytoolkit.googleapis.com/v1';
   private apikey = 'AIzaSyCKbv51KPjbxBAdzcZWWXtKbDaSDLO1uc4';
 
   userToken: any = '';
-  // registrarse
-  // https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
-
-  // login
-  // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
   constructor( private http: HttpClient ) {
     this.leerToken();
