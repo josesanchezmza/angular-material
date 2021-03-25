@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioModel} from "../../shared/models/usuario.model";
 import {NgForm} from "@angular/forms";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -8,23 +9,29 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loginInvalid: boolean;
-  usuario: UsuarioModel;
+  // public loginInvalid: boolean;
+  usuario: UsuarioModel = new UsuarioModel();
 
 
-  constructor(
-
-  ) { }
+  constructor( private authService: AuthService) { }
 
   ngOnInit() {
-    this.usuario=new UsuarioModel();
-    this.usuario.email = 'jose@gmail.com';
-    this.usuario.password = '123456';
+    // this.usuario.email = 'jose@gmail.com';
+    // this.usuario.password = '123456';
   }
 
   async onSubmit(form: NgForm) {
-    console.log(form.value);
-    console.log(this.usuario);
+    if (form.invalid) { return; }
+
+    this.authService.login(this.usuario).subscribe( res => {
+          console.log(res);
+    },
+      err => {
+          console.log(err.error.error.message);
+      });
+
+    // console.log(form.value);
+    // console.log(this.usuario);
     // this.loginInvalid = false;
     // this.formSubmitAttempt = false;
     // if (this.form.valid) {

@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule  } from '@angular/forms';
 import { RegisterComponent } from './auth/register/register.component';
 
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RegisterComponent } from './auth/register/register.component';
     ReactiveFormsModule,
     ExtendedModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
 

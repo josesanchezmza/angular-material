@@ -8,10 +8,12 @@
         <input matInput
                placeholder="Email"
                name="email"
+               type="email"
                [(ngModel)]="usuario.email"
-               required>
+               required
+               email>
         <mat-error>
-          Please provide a valid email address
+          El campo email posee errores.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
@@ -22,7 +24,7 @@
                minlength="2"
                required>
         <mat-error>
-          Please provide a valid email address
+          El campo Nombre posee errores.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
@@ -34,7 +36,7 @@
                minlength="6"
                required>
         <mat-error>
-          Please provide a valid password
+          La contraseña de contener más de 6 caracteres.
         </mat-error>
       </mat-form-field>
       <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Login</button>
