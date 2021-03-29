@@ -1,19 +1,18 @@
-<mat-card>
+<mat-card class="mat-elevation-z8">
   <mat-card-content>
     <form (ngSubmit)="onSubmit(loginForm)"
           #loginForm=ngForm>
       <h2>Log In</h2>
-      <mat-error *ngIf="loginInvalid">
-        The username and password were not recognised
-      </mat-error>
       <mat-form-field class="full-width-input">
         <input matInput
                placeholder="Email"
                name="email"
+               type="email"
                [(ngModel)]="usuario.email"
-               required>
+               required
+               email>
         <mat-error>
-          Please provide a valid email address
+          El campo email posee errores.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
@@ -22,16 +21,14 @@
                placeholder="Password"
                name="password"
                [(ngModel)]="usuario.password"
-               required>
+               required
+               minlength="6">
         <mat-error>
-          Please provide a valid password
+          El campo contraseña posee errores.
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Login</button>
+      <button [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
     </form>
   </mat-card-content>
   <mat-label>No posee un usuario?  <a routerLink="/register">Registrarse</a></mat-label>
 </mat-card>
-
-{{ usuario | json }}
-{{ loginForm.value | json }}

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioModel} from "../../shared/models/usuario.model";
 import {NgForm} from "@angular/forms";
+import {AuthService} from "../../shared/services/auth.service";
+import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,36 +11,38 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loginInvalid: boolean;
-  usuario: UsuarioModel;
+  usuario: UsuarioModel = new UsuarioModel();
+  recordar= false;
 
 
-  constructor(
-
-  ) { }
+  constructor( private authService: AuthService,
+               private router: Router) { }
 
   ngOnInit() {
-    this.usuario=new UsuarioModel();
-    this.usuario.email = 'jose@gmail.com';
-    this.usuario.password = '123456';
   }
 
-  async onSubmit(form: NgForm) {
-    console.log(form.value);
-    console.log(this.usuario);
-    // this.loginInvalid = false;
-    // this.formSubmitAttempt = false;
-    // if (this.form.valid) {
-    //   try {
-    //     const username = this.form.get('username').value;
-    //     const password = this.form.get('password').value;
-    //     await this.authService.login(username, password);
-    //   } catch (err) {
-    //     this.loginInvalid = true;
-    //   }
-    // } else {
-    //   this.formSubmitAttempt = true;
-    // }
-  }
+  onSubmit(form: NgForm) {
+    if (form.invalid) { return; }
 
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'espere for favor...',
+      icon: "info"
+    });
+    Swal.showLoading();
+
+    this.authService.login(this.usuario).subscribe( res => {
+          Swal.close();
+          this.router.navigateByUrl('/home');
+    },
+      err => {
+          Swal.fire({
+          allowOutsideClick: false,
+          icon: 'error',
+          title: 'Error al autenticar',
+          text: err.error.error.message
+        });
+      });
+
+  }
 }

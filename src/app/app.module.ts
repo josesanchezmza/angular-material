@@ -15,6 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule  } from '@angular/forms';
 import { RegisterComponent } from './auth/register/register.component';
 
+import { HttpClientModule } from "@angular/common/http";
+import { HeaderComponent } from './shared/header/header.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { RegisterComponent } from './auth/register/register.component';
     HomeComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { RegisterComponent } from './auth/register/register.component';
     ReactiveFormsModule,
     ExtendedModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
 

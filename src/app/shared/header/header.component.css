@@ -1,0 +1,15 @@
+.expanded-toolbar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.escudo {
+  width: 45px;
+  height: 45px;
+  object-fit: scale-down;
+}
