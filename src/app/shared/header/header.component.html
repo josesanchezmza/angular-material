@@ -1,14 +1,16 @@
-<mat-toolbar color="primary" class="expanded-toolbar">
+<mat-toolbar color="primary" class="expanded-toolbar mat-elevation-z4">
     <span>
-      <button mat-button routerLink="/">{{title}}</button>
-      <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado">{{title}}</button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
     </span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+    <button mat-button routerLink="/login" *ngIf="!estaAutenticado">
       <mat-icon>power_settings_new</mat-icon>
       Login
     </button>
-    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+    <button mat-button *ngIf="estaAutenticado" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       Logout
     </button>
@@ -30,11 +32,11 @@
     <mat-icon>gamepad</mat-icon>
     Play
   </button>
-  <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
+  <button mat-menu-item routerLink="/login" *ngIf="!estaAutenticado">
     <mat-icon>power_settings_new</mat-icon>
     Login
   </button>
-  <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
+  <button mat-menu-item *ngIf="estaAutenticado" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
     Logout
   </button>

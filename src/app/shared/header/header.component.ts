@@ -9,18 +9,21 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   title = 'angular-material';
-  isAuthenticated: boolean=false;
+  estaAutenticado: boolean=false;
 
   constructor(private authService: AuthService,
               private router: Router) {
-    this.isAuthenticated = this.authService.estaAutenticado();
+
   }
 
   ngOnInit(): void {
-  }
+      //Si se refresca el header en el navegafor, el indicador estaAutenticado toma el valor del siguiente metodo cuando el componente se inicializa
+      this.estaAutenticado = this.authService.estaAutenticado();
 
-  ngOnChanges() {
-    this.isAuthenticated = this.authService.estaAutenticado();
+      //Si el usuario se logea, este componente no se inicializa, por eso en esta parte esta suscripto a la emision de un indicador en authService
+      this.authService.estaAutenticado$.subscribe( res =>{
+      this.estaAutenticado = res;
+    });
   }
 
   logout() {

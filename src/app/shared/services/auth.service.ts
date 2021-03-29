@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UsuarioModel} from "../models/usuario.model";
 import {map} from "rxjs/operators";
@@ -26,6 +26,7 @@ export class AuthService {
       .pipe(
         map( (res: any) => {
           this.guardarToken(res.idToken);
+          this.estaAutenticado$.emit(true);
           return res;
         })
       );
@@ -33,6 +34,8 @@ export class AuthService {
 
   logout(){
       localStorage.removeItem('token');
+      this.estaAutenticado$.emit(false);
+      this.userToken = '';
   }
 
   nuevoUsuario(usuario: UsuarioModel){
@@ -65,7 +68,11 @@ export class AuthService {
   }
 
   estaAutenticado(): boolean {
+    console.log(this.userToken);
     return this.userToken.length > 2;
   }
+
+  //Se implementó un EventEmitter para emitir en el header true o false cuando esté autenticado o no el usuario (ver metodo login y logout)
+  estaAutenticado$ = new EventEmitter<boolean>();
 
 }
