@@ -32,12 +32,10 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
 
     this.authService.login(this.usuario).subscribe( res => {
-          console.log(res);
           Swal.close();
           this.router.navigateByUrl('/home');
     },
       err => {
-          console.log(err.error.error.message);
           Swal.fire({
           allowOutsideClick: false,
           icon: 'error',

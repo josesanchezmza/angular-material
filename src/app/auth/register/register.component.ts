@@ -29,7 +29,6 @@ export class RegisterComponent implements OnInit {
     Swal.showLoading();
 
     this.authService.nuevoUsuario(this.usuario).subscribe( res => {
-      console.log(res);
         Swal.close();
         this.router.navigateByUrl('/home');
     },
@@ -40,8 +39,6 @@ export class RegisterComponent implements OnInit {
           title: 'Error al autenticar',
           text: err.error.error.message
         });
-      console.log(err.error.error.message);
-
       })
   }
 }

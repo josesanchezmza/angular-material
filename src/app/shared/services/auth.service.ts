@@ -32,11 +32,10 @@ export class AuthService {
   }
 
   logout(){
-
+      localStorage.removeItem('token');
   }
 
   nuevoUsuario(usuario: UsuarioModel){
-
     const authData = {
       ...usuario,
       returnSecureToken: true
@@ -65,6 +64,8 @@ export class AuthService {
     return this.userToken;
   }
 
-
+  estaAutenticado(): boolean {
+    return this.userToken.length > 2;
+  }
 
 }
