@@ -1,22 +1,25 @@
-<mat-toolbar color="primary" class="expanded-toolbar mat-elevation-z4">
-    <span>
-      <button mat-button routerLink="/" *ngIf="estaAutenticado">{{title}}</button>
-      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
-      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
-      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>home</mat-icon></button>
+<mat-toolbar color="accent" class="expanded-toolbar mat-elevation-z4">
+
+
+  <span>
+<!--    <a routerLink="/home"><img class="escudo" src="../../../assets/img/cientifica_escudo.png" alt="Científica"></a>-->
+<!--      <button mat-button routerLink="/" *ngIf="estaAutenticado">{{title}}</button>-->
+<!--      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>search</mat-icon>RC</button>-->
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>fingerprint</mat-icon>  RC</button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>time_to_leave</mat-icon>  SV</button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>airline_seat_flat</mat-icon>  Necros</button>
+      <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>local_shipping</mat-icon>  Traslados</button>
     </span>
+
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/login" *ngIf="!estaAutenticado">
       <mat-icon>power_settings_new</mat-icon>
       Login
     </button>
+    <button mat-button routerLink="/" *ngIf="estaAutenticado"><mat-icon>supervisor_account</mat-icon>  Gestión de Usuarios</button>
     <button mat-button *ngIf="estaAutenticado" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       Logout
-    </button>
-    <button mat-button routerLink="/game">
-      <mat-icon>gamepad</mat-icon>
-      Play
     </button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
