@@ -56,6 +56,13 @@ export class AuthService {
   private guardarToken(idToken: string) {
     this.userToken=idToken;
     localStorage.setItem('token', idToken);
+
+    //tomamos el momento cuando ingreso el usuario y le sumamos 3600seg para que obtengamos
+    //el momento cuando el token expira, este dato se almacena en formato de string en el localStorage
+    let hoy = new Date();
+    hoy.setSeconds(3600);
+
+    localStorage.setItem('expita', hoy.getTime().toString());
   }
 
   leerToken() {
@@ -68,8 +75,21 @@ export class AuthService {
   }
 
   estaAutenticado(): boolean {
-    console.log(this.userToken);
-    return this.userToken.length > 2;
+    if (this.userToken.length < 2) {
+      return false;
+    }
+
+    const expira = Number(localStorage.getItem('expira'));
+
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
+
+    if (expiraDate > new Date()){
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
   //Se implementó un EventEmitter para emitir en el header true o false cuando esté autenticado o no el usuario (ver metodo login y logout)
