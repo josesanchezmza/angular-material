@@ -1,6 +1,7 @@
-export class Usuario {
+export class UsuarioModel {
+  email: string;
+  password: string;
   nombre: string;
   apellido: string;
-  email: string;
-  enable: boolean;
+  dni: number;
 }

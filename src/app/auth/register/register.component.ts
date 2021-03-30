@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioModel} from "../../shared/models/usuario.model";
+import {UsuarioModel} from "../../models/usuario.model";
 import {NgForm} from "@angular/forms";
-import {AuthService} from "../../shared/services/auth.service";
+import {AuthService} from "../../services/auth.service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 
